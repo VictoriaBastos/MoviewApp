@@ -4,6 +4,8 @@ import com.bastos.moview.controller.movie.request.AnswerReviewRequest;
 import com.bastos.moview.controller.movie.request.ReviewRequest;
 import com.bastos.moview.controller.movie.request.ScoreRequest;
 import com.bastos.moview.controller.movie.response.*;
+import com.bastos.moview.repositories.MovieRepository;
+import com.bastos.moview.service.MovieService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

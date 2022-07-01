@@ -1,6 +1,7 @@
 package com.bastos.moview.controller.user;
 
 import com.bastos.moview.domain.User;
+import com.bastos.moview.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
