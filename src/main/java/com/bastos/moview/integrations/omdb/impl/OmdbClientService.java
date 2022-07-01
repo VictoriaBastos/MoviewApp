@@ -1,6 +1,7 @@
 package com.bastos.moview.integrations.omdb.impl;
 
 import com.bastos.moview.controller.movie.response.OmdbMovieResponse;
+import com.bastos.moview.integrations.omdb.client.OmdbClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
