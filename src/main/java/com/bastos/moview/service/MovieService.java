@@ -4,11 +4,9 @@ import com.bastos.moview.controller.movie.request.AnswerReviewRequest;
 import com.bastos.moview.controller.movie.request.ReviewRequest;
 import com.bastos.moview.controller.movie.request.ScoreRequest;
 import com.bastos.moview.controller.movie.response.*;
-import com.bastos.moview.domain.Answers;
-import com.bastos.moview.domain.Review;
-import com.bastos.moview.domain.Score;
-import com.bastos.moview.domain.User;
+import com.bastos.moview.domain.*;
 import com.bastos.moview.enums.ProfileEnum;
+import com.bastos.moview.integrations.omdb.impl.OmdbClientService;
 import com.bastos.moview.repositories.MovieRepository;
 import com.bastos.moview.repositories.ReviewRepository;
 import com.bastos.moview.repositories.ScoreRepository;
@@ -55,7 +53,7 @@ public class MovieService {
 
         if (user.isPresent()) {
             scoreRepository.save(Score.builder()
-                    .movie(scoreRequest.getTitle())
+                    .movie(new Movie(scoreRequest.getTitle()))
                     .userClient(user.get())
                     .build());
 
@@ -159,5 +157,4 @@ public class MovieService {
             user.getProfile().setProfileName(ProfileEnum.ROLE_LEITOR);
         }
     }
-
 }

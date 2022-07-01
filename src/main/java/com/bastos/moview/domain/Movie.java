@@ -36,4 +36,8 @@ public class Movie {
 
     @OneToMany(mappedBy = "movieClient")
     private List<Review> reviews = new ArrayList<>();
+
+    public Movie(String title) {
+        this.title = title;
+    }
 }
