@@ -58,7 +58,7 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/excluir/{id}")
     public void deleteUsuario(@PathVariable long id) {
         Optional<User> user = userRepository.findById(id);
         if (user.isPresent()) {

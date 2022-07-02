@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -44,6 +45,7 @@ public class MoviesController {
         OmdbMovieResponse movie = movieService.getMovieById(id);
         return ResponseEntity.status(HttpStatus.OK).body(movie);
     }
+    @PreAuthorize("hasAnyRole('LEITOR')")
 
     @PostMapping("/avaliacao")
     public ResponseEntity<ScoreResponse> postScoreMovie(@Valid @RequestBody ScoreRequest scoreResquest){
@@ -52,11 +54,14 @@ public class MoviesController {
         return ResponseEntity.status(201).body(scoreResponse);
     }
 
+    @PreAuthorize("hasAnyRole('BASICO')")
+
     @PostMapping("/comentario")
     public ResponseEntity<ReviewResponse> postReviewMovie(@Valid @RequestBody ReviewRequest reviewResquest){
         ReviewResponse reviewResponse = movieService.postReviewMovie(reviewResquest);
         return ResponseEntity.status(201).body(reviewResponse);
     }
+    @PreAuthorize("hasAnyRole('BASICO')")
 
     @PostMapping("/comentario/resposta/{id}")
     public ResponseEntity<AnswerReviewResponse> postAnswerReviewMovie(@PathVariable int id,
@@ -64,6 +69,7 @@ public class MoviesController {
         AnswerReviewResponse answerReviewResponse = movieService.postAnswerReviewMovie(id, answerReviewRequest);
         return ResponseEntity.status(201).body(answerReviewResponse);
     }
+    @PreAuthorize("hasAnyRole('AVANCADO')")
 
     @PatchMapping("/comentario/repetido/{id}")
     public ResponseEntity<RepeatedResponse> putRepeatedReview(@PathVariable int id,
@@ -72,6 +78,7 @@ public class MoviesController {
         RepeatedResponse repeatedResponse = movieService.putRepeatedReview(id, repeated);
         return ResponseEntity.status(201).body(repeatedResponse);
     }
+    @PreAuthorize("hasAnyRole('AVANCADO')")
 
     @PatchMapping("/comentario/like/{id}")
     public ResponseEntity<ReactionResponse> putLikeComment( @PathVariable int id,
@@ -80,6 +87,7 @@ public class MoviesController {
         return ResponseEntity.status(201).body(likeResponse);
     }
 
+    @PreAuthorize("hasAnyRole('MODERADOR')")
     @PatchMapping("/comentario/dislike/{id}")
     public ResponseEntity<ReactionResponse> putDislikeComment(@PathVariable int id,
                                                               @RequestParam(name = "dislike", required = true) boolean dislike){
