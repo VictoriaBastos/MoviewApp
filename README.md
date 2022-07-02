@@ -30,12 +30,30 @@ Microserviço desenvolvido para a aplicação Moview.
 
 Endpoints disponíveis na aplicação:
 
+###User
+
+
 | **Verbo** | **Descrição** | **URL**                                                                    | 
 | ----------|---------------------------------------------------------------------------------------------|------------------|
-| **/GET**  | ````                                              |
-| **/GET**  | ``` |        | 
-| **/GET**  | ````                                  | | 
-| **/PUT**  | ````                                            |     |
+| **/POST**  | ``/usuarios/cadastrar``                 | Cadastrar Usuario
+| **/POST**  | ``/usuarios/logar` |        | Login
+| **/PUT**  | ``/usuarios/alterar``                                  | Alterar dados do usuario
+| **/DELETE**  | ``/usuarios/excluir/{id}``                          |    Excluir Usuario |
+
+
+###Movies
+
+
+| **Verbo** | **Descrição** | **URL**                                                                    | 
+| ----------|---------------------------------------------------------------------------------------------|------------------|
+| **/GET**  | ``/`                 |
+| **/GET**  | ``/` |        | 
+| **/POST**  | ``/u``                                  | 
+| **/POST*  | ````                          |   |
+| **/PATCH**  | ````                                  | 
+| **/PATCH*  | ````                          |   |
+| **/PATCH*  | ```                                  | 
+
 
 ## Requisitos
 Essa aplicação pode ser rodada localmente:
@@ -48,9 +66,6 @@ Essa aplicação pode ser rodada localmente:
 $ mvn clean install
 $ mvn spring-boot:run -Dspring-boot.run.profiles=LOCAL
 ```
-
-### Docker
-*Implementacao futura
 
 ## Teste
 *Esse serviço possui API's em HTTP, para testar localmente as API's REST utilizar o client **Insomnia** .
